@@ -1,4 +1,4 @@
-# My-Custom-Glance-Widgets
+# My Custom Glance Widgets
 
 Custom widget components for the [Glance](https://github.com/glanceapp/glance) dashboard application.
 
