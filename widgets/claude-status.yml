@@ -1,0 +1,86 @@
+- type: custom-api
+  title: Claude Status (With Components)
+  cache: 2m
+  url: https://status.claude.com/api/v2/summary.json
+  template: |
+    <div>
+      <div class="flex items-center gap-15 margin-bottom-20">
+        <div class="grow min-width-0">
+          <a class="size-h3 color-highlight text-truncate block" href="https://status.claude.com/" target="_blank" rel="noreferrer" title="Claude Status">Claude Status</a>
+          <ul class="list-horizontal-text">
+            {{ $indicator := .JSON.String "status.indicator" }}
+            {{ if eq $indicator "none" }}
+              <li class="color-positive">All Systems Operational</li>
+            {{ else if eq $indicator "minor" }}
+              <li class="color-highlight">Minor Issues</li>
+            {{ else if eq $indicator "major" }}
+              <li class="color-negative">Major Outage</li>
+            {{ else if eq $indicator "critical" }}
+              <li class="color-negative">Critical Issues</li>
+            {{ else }}
+              <li>{{ .JSON.String "status.description" }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+
+      <ul class="list list-gap-8">
+        {{ $components := .JSON.Array "components" }}
+        {{ range $group := $components }}
+          {{ if and ($group.Bool "group") (eq ($group.String "group_id") "") }}
+            <li class="margin-top-10">
+              <div class="size-h5 margin-bottom-8">{{ $group.String "name" }}</div>
+              <ul class="list list-gap-8">
+                {{ range $component := $components }}
+                  {{ if eq ($component.String "group_id") ($group.String "id") }}
+                    <li class="flex items-center gap-10">
+                      <div style="width: 0.5rem; height: 0.5rem; border-radius: 50%; margin-right: 0.5rem; {{ if eq ($component.String "status") "operational" }}background-color: var(--color-positive){{ else if eq ($component.String "status") "degraded_performance" }}background-color: var(--color-highlight){{ else if eq ($component.String "status") "partial_outage" }}background-color: var(--color-negative){{ else if eq ($component.String "status") "major_outage" }}background-color: var(--color-negative); opacity: 0.7;{{ else if eq ($component.String "status") "under_maintenance" }}background-color: var(--color-text-subdue){{ else }}background-color: var(--color-primary){{ end }}"></div>
+                      <span class="size-h6">{{ $component.String "name" }}</span>
+                      <span class="size-text-13 color-subdue" style="margin-left: auto;">
+                        {{ if eq ($component.String "status") "operational" }}
+                          Operational
+                        {{ else if eq ($component.String "status") "degraded_performance" }}
+                          Degraded
+                        {{ else if eq ($component.String "status") "partial_outage" }}
+                          Partial Outage
+                        {{ else if eq ($component.String "status") "major_outage" }}
+                          Major Outage
+                        {{ else if eq ($component.String "status") "under_maintenance" }}
+                          Maintenance
+                        {{ else }}
+                          {{ $component.String "status" }}
+                        {{ end }}
+                      </span>
+                    </li>
+                  {{ end }}
+                {{ end }}
+              </ul>
+            </li>
+          {{ end }}
+        {{ end }}
+
+        {{ range $component := $components }}
+          {{ if and (not ($component.Bool "group")) (eq ($component.String "group_id") "") }}
+            <li class="flex items-center gap-10">
+              <div style="width: 0.5rem; height: 0.5rem; border-radius: 50%; margin-right: 0.5rem; {{ if eq ($component.String "status") "operational" }}background-color: var(--color-positive){{ else if eq ($component.String "status") "degraded_performance" }}background-color: var(--color-highlight){{ else if eq ($component.String "status") "partial_outage" }}background-color: var(--color-negative){{ else if eq ($component.String "status") "major_outage" }}background-color: var(--color-negative); opacity: 0.7;{{ else if eq ($component.String "status") "under_maintenance" }}background-color: var(--color-text-subdue){{ else }}background-color: var(--color-primary){{ end }}"></div>
+              <span class="size-h6">{{ $component.String "name" }}</span>
+              <span class="size-text-13 color-subdue" style="margin-left: auto;">
+                {{ if eq ($component.String "status") "operational" }}
+                  Operational
+                {{ else if eq ($component.String "status") "degraded_performance" }}
+                  Degraded
+                {{ else if eq ($component.String "status") "partial_outage" }}
+                  Partial Outage
+                {{ else if eq ($component.String "status") "major_outage" }}
+                  Major Outage
+                {{ else if eq ($component.String "status") "under_maintenance" }}
+                  Maintenance
+                {{ else }}
+                  {{ $component.String "status" }}
+                {{ end }}
+              </span>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>

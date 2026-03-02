@@ -11,6 +11,7 @@ To use these custom widgets in your Glance dashboard, use the `$include` directi
 ```yaml
 - type: group
   widgets:
+    - $include: widgets/claude-status.yml
     - $include: widgets/github-status.yml
     - $include: widgets/vrchat-status.yml
     - $include: widgets/bambu-labs-status.yml
@@ -33,6 +34,20 @@ Displays real-time status of Bambu Lab services and components with color-coded 
 **Requirements:**
 - Internet access to `status.bambulab.com`
 - Optional: Customize cache duration (default: 5m)
+
+---
+
+### claude-status.yml
+Shows Claude service status with component grouping and status breakdown.
+
+**Configuration:**
+```yaml
+- $include: widgets/claude-status.yml
+```
+
+**Requirements:**
+- Internet access to `status.claude.com`
+- Optional: Customize cache duration (default: 2m)
 
 ---
 

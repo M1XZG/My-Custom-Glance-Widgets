@@ -12,5 +12,6 @@ This repository contains reusable custom widgets that extend the functionality o
 ## Widgets
 
 - [**bambu-labs-status.yml**](widgets/bambu-labs-status.yml) - Displays Bambu Lab service status
+- [**claude-status.yml**](widgets/claude-status.yml) - Shows Claude service status with component details
 - [**github-status.yml**](widgets/github-status.yml) - Shows GitHub platform status with component details
 - [**vrchat-status.yml**](widgets/vrchat-status.yml) - Monitors VRChat service status with component breakdown
