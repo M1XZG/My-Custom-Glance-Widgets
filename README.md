@@ -11,7 +11,7 @@ This repository contains reusable custom widgets that extend the functionality o
 
 ## Widgets
 
-- [**bambu-labs-status**](widgets/bambu-labs-status/) - Displays Bambu Lab service status
-- [**claude-status**](widgets/claude-status/) - Shows Claude service status with component details
-- [**github-status**](widgets/github-status/) - Shows GitHub platform status with component details
-- [**vrchat-status**](widgets/vrchat-status/) - Monitors VRChat service status with component breakdown
+- [**bambu-labs-status**](widgets/README.md#bambu-labs-status) - Displays Bambu Lab service status
+- [**claude-status**](widgets/README.md#claude-status) - Shows Claude service status with component details
+- [**github-status**](widgets/README.md#github-status) - Shows GitHub platform status with component details
+- [**vrchat-status**](widgets/README.md#vrchat-status) - Monitors VRChat service status with component breakdown
