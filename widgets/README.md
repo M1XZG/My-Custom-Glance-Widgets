@@ -2,47 +2,15 @@
 
 This directory contains custom widget YAML files organized by widget. Each widget directory contains the YAML configuration and optional documentation and screenshots.
 
-## Structure
+## Table of Contents
 
-Each widget is organized in its own subdirectory:
-```
-widgets/
-├── bambu-labs-status/
-│   ├── bambu-labs-status.yml
-│   ├── README.md (optional)
-│   └── screenshots/ (optional)
-├── claude-status/
-│   ├── claude-status.yml
-│   ├── README.md (optional)
-│   └── screenshots/ (optional)
-├── github-status/
-│   ├── github-status.yml
-│   ├── README.md (optional)
-│   └── screenshots/ (optional)
-├── vrchat-status/
-│   ├── vrchat-status.yml
-│   ├── README.md (optional)
-│   └── screenshots/ (optional)
-└── README.md
-```
-
-## Adding Screenshots
-
-To add screenshots for each widget:
-
-1. Create a `screenshots/` directory in the widget's subdirectory
-2. Add PNG/JPG images with descriptive names (e.g., `widget-overview.png`, `status-example.png`)
-3. Update the widget's `README.md` (in the widget subdirectory) to reference the screenshots:
-
-```markdown
-## Screenshots
-
-### Overall Status
-![Claude Status Overview](./screenshots/claude-status-overview.png)
-
-### Component Details
-![Claude Status Components](./screenshots/claude-status-components.png)
-```
+- [How to Use These Widgets](#how-to-use-these-widgets)
+- [Bambu Labs Status](#bambu-labs-status)
+- [Claude Status](#claude-status)
+- [GitHub Status](#github-status)
+- [VRChat Status](#vrchat-status)
+- [Customization](#customization)
+- [Reference](#reference)
 
 ## How to Use These Widgets
 
@@ -65,7 +33,7 @@ Alternatively, copy the desired widget subdirectories to your Glance `widgets` c
 
 ## Widget Directory Details
 
-### bambu-labs-status/
+### Bambu Labs Status
 
 Displays real-time status of Bambu Lab services and components with color-coded indicators.
 
@@ -83,9 +51,13 @@ Displays real-time status of Bambu Lab services and components with color-coded 
 - Component status breakdown with color-coded status indicators
 - Real-time updates every 5 minutes
 
+**Screenshots:**
+
+![Bambu Labs Status Overview](./bambu-labs-status/screenshots/bambu-labs-status-overview.png)
+
 ---
 
-### claude-status/
+### Claude Status
 
 Shows Claude service status with component grouping and status breakdown.
 
@@ -110,9 +82,13 @@ Shows Claude service status with component grouping and status breakdown.
   - Claude Code
   - Claude for Government
 
+**Screenshots:**
+
+![Claude Status Overview](./claude-status/screenshots/claude-status-overview.png)
+
 ---
 
-### github-status/
+### GitHub Status
 
 Shows GitHub platform status with a breakdown of individual service components.
 
@@ -131,9 +107,13 @@ Shows GitHub platform status with a breakdown of individual service components.
 - Service component breakdown
 - Real-time updates every 5 minutes
 
+**Screenshots:**
+
+![GitHub Status Overview](./github-status/screenshots/github-status-overview.png)
+
 ---
 
-### vrchat-status/
+### VRChat Status
 
 Monitors VRChat service status with component grouping and status breakdown.
 
@@ -152,6 +132,10 @@ Monitors VRChat service status with component grouping and status breakdown.
 - Individual component status with color-coded indicators
 - Supports maintenance status tracking
 - Real-time updates every 2 minutes
+
+**Screenshots:**
+
+![VRChat Status Overview](./vrchat-status/screenshots/vrchat-status-overview.png)
 
 ---
 
