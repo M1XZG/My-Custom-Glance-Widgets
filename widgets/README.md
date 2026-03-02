@@ -53,7 +53,7 @@ Displays real-time status of Bambu Lab services and components with color-coded 
 
 **Screenshots:**
 
-![Bambu Labs Status Overview](./bambu-labs-status/bambu-labs-status-overview.png)
+![Bambu Labs Status Overview](./bambu-labs-status/bambu-labs-status-screenshot.png)
 
 ---
 
@@ -84,7 +84,7 @@ Shows Claude service status with component grouping and status breakdown.
 
 **Screenshots:**
 
-![Claude Status Overview](./claude-status/screenshots/claude-status-overview.png)
+![Claude Status Overview](./claude-status/claude-status-screenshot.png)
 
 ---
 
@@ -109,7 +109,7 @@ Shows GitHub platform status with a breakdown of individual service components.
 
 **Screenshots:**
 
-![GitHub Status Overview](./github-status/screenshots/github-status-overview.png)
+![GitHub Status Overview](./github-status/github-status-screenshot.png)
 
 ---
 
@@ -135,7 +135,7 @@ Monitors VRChat service status with component grouping and status breakdown.
 
 **Screenshots:**
 
-![VRChat Status Overview](./vrchat-status/screenshots/vrchat-status-overview.png)
+![VRChat Status Overview](./vrchat-status/vrchat-status-screenshot.png)
 
 ---
 
