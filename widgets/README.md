@@ -53,7 +53,7 @@ Displays real-time status of Bambu Lab services and components with color-coded 
 
 **Screenshots:**
 
-![Bambu Labs Status Overview](./bambu-labs-status/screenshots/bambu-labs-status-overview.png)
+![Bambu Labs Status Overview](./bambu-labs-status/bambu-labs-status-overview.png)
 
 ---
 
