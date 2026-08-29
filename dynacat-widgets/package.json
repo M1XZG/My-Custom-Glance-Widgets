@@ -1,0 +1,10 @@
+{
+  "name": "m1xzg-dynacat-widgets",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate-widgets.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
+}

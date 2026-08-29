@@ -4,6 +4,10 @@ Custom widget components for the [Glance](https://github.com/glanceapp/glance) d
 
 This repository contains reusable custom widgets that extend the functionality of Glance. These widgets can be included in your Glance configuration files using the `$include` directive.
 
+Converted Dynacat contribution candidates are available in
+[`dynacat-widgets/`](dynacat-widgets/README.md). They follow the upstream
+Dynawidgets package structure and remain here for review before submission.
+
 ## Related Resources
 
 - **[Glance](https://github.com/glanceapp/glance)** - The main Glance dashboard application
