@@ -8,7 +8,10 @@ They are staged here for review before any upstream pull request is opened.
 
 | Widget | Purpose | Origin |
 | --- | --- | --- |
-| `statuspage-components` | Generic Atlassian Statuspage health and component display | Consolidates the GitHub, Claude, Bambu Lab, and VRChat widgets |
+| `github-status-components` | GitHub service health and component status | Converts the GitHub Status widget |
+| `claude-status-components` | Claude service health and grouped component status | Converts the Claude Status widget |
+| `bambu-lab-status` | Bambu Lab service health and component status | Converts the Bambu Lab Status widget |
+| `vrchat-status-components` | VRChat service health and grouped component status | Converts the VRChat Status widget |
 | `immich-server-stats` | Immich photo, video, storage, and disk-capacity statistics | Converts the advanced Immich statistics widget |
 | `portainer-endpoint-summary` | Portainer endpoint connectivity and Docker resource counts | Generalizes the per-host Portainer status widgets |
 | `portainer-container-list` | Remote container status through the authenticated Portainer API | Generalizes the per-host remote Docker container widgets |
@@ -28,9 +31,5 @@ npm install
 npm run validate
 ```
 
-Each package under `widgets/` contains:
-
-- `template.txt`, containing only the Dynawidgets template and optional
-  `required` block.
-- `widget.md`, containing configuration and setup instructions.
-- `meta.yml`, containing the catalog title, description, and author.
+Each package under `widgets/` contains a template, setup instructions, and
+catalog metadata.
