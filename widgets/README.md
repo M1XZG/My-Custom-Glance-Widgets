@@ -6,6 +6,7 @@ This directory contains custom widget YAML files organized by widget. Each widge
 
 - [How to Use These Widgets](#how-to-use-these-widgets)
 - [Bambu Labs Status](#bambu-labs-status)
+- [Bambuddy Printer Status](#bambuddy-printer-status)
 - [Claude Status](#claude-status)
 - [GitHub Status](#github-status)
 - [VRChat Status](#vrchat-status)
@@ -25,6 +26,7 @@ To use these custom widgets in your Glance dashboard, use the `$include` directi
     - $include: widgets/github-status/github-status.yml
     - $include: widgets/vrchat-status/vrchat-status.yml
     - $include: widgets/bambu-labs-status/bambu-labs-status.yml
+    - $include: widgets/bambuddy-printer-status/bambuddy-printer-status.yml
 ```
 
 ### Method 2: Copy to Your Config Directory
@@ -54,6 +56,43 @@ Displays real-time status of Bambu Lab services and components with color-coded 
 **Screenshots:**
 
 ![Bambu Labs Status Overview](./bambu-labs-status/bambu-labs-status-screenshot.png)
+
+---
+
+### Bambuddy Printer Status
+
+Shows live status for one printer monitored by
+[Bambuddy](https://github.com/maziggy/bambuddy), including the active print,
+progress, remaining time, layer count, and nozzle and bed temperatures.
+
+**Configuration:**
+```yaml
+- $include: widgets/bambuddy-printer-status/bambuddy-printer-status.yml
+```
+
+**Requirements:**
+- A reachable Bambuddy instance
+- The printer ID from Bambuddy
+- A Bambuddy API key with read-status access
+
+Set these environment variables:
+
+```dotenv
+BAMBUDDY_URL=http://bambuddy.example:8000
+BAMBUDDY_PRINTER_ID=1
+BAMBUDDY_READONLY=bb_your_read_only_key
+```
+
+**Features:**
+- Connected, printing, paused, idle, and offline states
+- Active print name and progress
+- Remaining print time and layer count
+- Current and target nozzle and bed temperatures
+- Read-only API access with a 30-second cache
+
+**Screenshot:**
+
+![Bambuddy Printer Status](./bambuddy-printer-status/bambuddy-printer-status-screenshot.png)
 
 ---
 
@@ -141,7 +180,9 @@ Monitors VRChat service status with component grouping and status breakdown.
 
 ## Environment Variables
 
-These widgets use the standard Glance custom-api widget type and don't require any environment variables. However, ensure your Glance instance has internet access to fetch the status data from the respective APIs.
+The public service-status widgets do not require environment variables.
+Bambuddy Printer Status requires the Bambuddy URL, printer ID, and a read-only
+API key described above.
 
 ## Customization
 

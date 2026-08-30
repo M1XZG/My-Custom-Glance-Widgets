@@ -1,0 +1,73 @@
+- type: custom-api
+  title: Bambuddy Printer Status
+  cache: 30s
+  url: ${BAMBUDDY_URL}/api/v1/printers/${BAMBUDDY_PRINTER_ID}/status
+  headers:
+    X-API-Key: ${BAMBUDDY_READONLY}
+  template: |
+    {{ $connected := .JSON.Bool "connected" }}
+    {{ $state := .JSON.String "state" }}
+    {{ $name := .JSON.String "name" }}
+    {{ $print := .JSON.String "current_print" }}
+    {{ $progress := .JSON.Float "progress" }}
+    {{ $remaining := .JSON.Int "remaining_time" }}
+    {{ $layer := .JSON.Int "layer_num" }}
+    {{ $layers := .JSON.Int "total_layers" }}
+    {{ $nozzle := .JSON.Float "temperatures.nozzle" }}
+    {{ $nozzleTarget := .JSON.Float "temperatures.nozzle_target" }}
+    {{ $bed := .JSON.Float "temperatures.bed" }}
+    {{ $bedTarget := .JSON.Float "temperatures.bed_target" }}
+
+    <div style="display: grid; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+          {{ if not $connected }}background-color: var(--color-negative);
+          {{ else if eq $state "RUNNING" }}background-color: var(--color-positive);
+          {{ else if eq $state "PAUSE" }}background-color: var(--color-highlight);
+          {{ else }}background-color: var(--color-text-subdue);{{ end }}">
+        </span>
+        <div style="min-width: 0;">
+          <a class="size-h4 color-highlight" href="${BAMBUDDY_URL}" target="_blank" rel="noreferrer">{{ $name }}</a>
+          <div class="size-h6 color-subdue">
+            {{ if not $connected }}Offline
+            {{ else if eq $state "RUNNING" }}Printing
+            {{ else if eq $state "PAUSE" }}Paused
+            {{ else if $state }}{{ $state }}
+            {{ else }}Connected{{ end }}
+          </div>
+        </div>
+      </div>
+
+      {{ if and $connected (or (eq $state "RUNNING") (eq $state "PAUSE")) }}
+        <div>
+          <div class="size-h5" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="{{ $print }}">
+            {{ $print }}
+          </div>
+          <div style="height: 8px; margin-top: 8px; overflow: hidden; border-radius: 999px; background: var(--color-widget-background-highlight);">
+            <div style="height: 100%; width: {{ printf "%.0f" $progress }}%; border-radius: inherit; background: var(--color-primary);"></div>
+          </div>
+          <div class="size-h6 color-subdue" style="display: flex; justify-content: space-between; margin-top: 5px;">
+            <span>{{ printf "%.0f" $progress }}%</span>
+            <span>{{ $remaining }} min remaining</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+          <div style="padding: 8px; border-radius: 6px; background: var(--color-widget-background-highlight);">
+            <div class="size-h6 color-subdue">Layer</div>
+            <div class="size-h5">{{ $layer }} / {{ $layers }}</div>
+          </div>
+          <div style="padding: 8px; border-radius: 6px; background: var(--color-widget-background-highlight);">
+            <div class="size-h6 color-subdue">Nozzle</div>
+            <div class="size-h5">{{ printf "%.0f" $nozzle }} / {{ printf "%.0f" $nozzleTarget }} C</div>
+          </div>
+          <div style="padding: 8px; border-radius: 6px; background: var(--color-widget-background-highlight);">
+            <div class="size-h6 color-subdue">Bed</div>
+            <div class="size-h5">{{ printf "%.0f" $bed }} / {{ printf "%.0f" $bedTarget }} C</div>
+          </div>
+        </div>
+      {{ else if $connected }}
+        <div class="color-subdue">No print is currently active.</div>
+      {{ else }}
+        <div class="color-negative">Bambuddy is not receiving printer status.</div>
+      {{ end }}

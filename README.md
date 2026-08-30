@@ -16,6 +16,7 @@ Dynawidgets package structure and remain here for review before submission.
 ## Widgets
 
 - [**bambu-labs-status**](widgets/README.md#bambu-labs-status) - Displays Bambu Lab service status
+- [**bambuddy-printer-status**](widgets/README.md#bambuddy-printer-status) - Shows live printer and active print status from Bambuddy
 - [**claude-status**](widgets/README.md#claude-status) - Shows Claude service status with component details
 - [**github-status**](widgets/README.md#github-status) - Shows GitHub platform status with component details
 - [**vrchat-status**](widgets/README.md#vrchat-status) - Monitors VRChat service status with component breakdown
